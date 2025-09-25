@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix - AI, Design, Forex & IT Expert</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: #667eea;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            left: 0;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 40px 0;
+        }
+        
+        .hero-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin: 30px 0 20px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #667eea22, #764ba222);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
+        }
+        
+        ul {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            list-style: none;
+        }
+        
+        li {
+            margin: 15px 0;
+            color: #555;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+        
+        .service-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .service-card ul {
+            background: transparent;
+            padding: 0;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .portfolio-content h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-quote {
+            color: #28a745 !important;
+            font-weight: bold !important;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* Buttons */
+        button, .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        button:hover, .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .interactive-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 20px 0;
+        }
+        
+        .interactive-btn:hover {
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+        }
+        
+        /* Section spacing */
+        .section {
+            margin: 40px 0;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+            color: #666;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                padding: 0.6rem 1rem;
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 100px 10px 20px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .services-grid,
+            .portfolio-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Interactive elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Glow effect */
+        .glow {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo floating">Felix</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content - Home Section -->
+    <div class="main-content" id="home">
+        <div class="container fade-in">
+            <!-- Hero Section with Profile Image -->
+            <div class="hero-section">
+                <img src="images/felix-profile.jpg" alt="Felix - AI, Design, Forex & IT Expert" class="hero-image floating">
+                <h1>Welcome to Felix's Professional Hub</h1>
+            </div>
+            
+            <p>Transforming businesses through AI innovation, stunning interior design, strategic Forex trading, and cutting-edge IT solutions. With over 5 years of experience, I help organizations achieve excellence across multiple industries.</p>
+            
+            <div class="highlight">
+                <strong>Why Choose Me:</strong> I combine technical expertise with creative vision to deliver comprehensive solutions that drive real business growth and transformation!
+            </div>
+            
+            <h2>My Core Expertise</h2>
+            <ul>
+                <li><strong>AI Consulting</strong> - Implementing AI transformation strategies that revolutionize business operations</li>
+                <li><strong>Interior Design</strong> - Creating innovative, functional spaces that inspire and enhance productivity</li>
+                <li><strong>Forex Trading</strong> - Developing profitable trading strategies with proven risk management techniques</li>
+                <li><strong>IT Solutions</strong> - Building robust systems that align technology with business growth goals</li>
+            </ul>
+            
+            <button class="interactive-btn" onclick="changeColor()">See My Dynamic Skills in Action!</button>
+            <p id="demo">Click above to experience the kind of interactive innovation I bring to every project!</p>
+            
+            <div class="footer">
+                <p>Felix - AI, Design, Forex & IT Expert</p>
+            </div>
+        </div>
+    </div>
+        
+    <!-- About Section -->
+    <div class="section" id="about">
+        <div class="container fade-in">
+            <h1>About Felix</h1>
+            
+            <div class="profile-section">
+                <src="images/felix-about.jpg"  class="felix-profile.jpg">
+                 <div class="profile-text">
+           
+                    <p>Welcome to my professional world where technology meets creativity, and strategic thinking drives exceptional results. I'm Felix, and I've spent over five years mastering the art of business transformation across four dynamic industries.</p>
+                    
+                    <p>What started as a passion for technology has evolved into a comprehensive expertise spanning artificial intelligence, interior design, financial markets, and IT infrastructure. This unique combination allows me to see opportunities and solutions that others might miss.</p>
+                </div>
+            </div>
+            
+            <h2>My Journey</h2>
+            <p>What started as a passion for technology has evolved into a comprehensive expertise spanning artificial intelligence, interior design, financial markets, and IT infrastructure. This unique combination allows me to see opportunities and solutions that others might miss.</p>
+            
+            <h2>My Philosophy</h2>
+            <p>I believe that the future belongs to professionals who can bridge different worlds. By combining AI's analytical power, design's creative vision, Forex's strategic thinking, and IT's systematic approach, I help businesses achieve breakthrough results they never thought possible.</p>
+            
+            <h2>What Drives Me</h2>
+            <ul>
+                <li><strong>Innovation:</strong> Constantly exploring new technologies and methodologies</li>
+                <li><strong>Excellence:</strong> Delivering solutions that exceed expectations</li>
+                <li><strong>Education:</strong> Sharing knowledge to empower others</li>
+                <li><strong>Integration:</strong> Creating synergies between different disciplines</li>
+            </ul>
+            
+            <h2>Beyond Work</h2>
+            <p>When I'm not transforming businesses, you'll find me studying market trends, exploring new design concepts, experimenting with AI algorithms, or mentoring the next generation of multi-disciplinary professionals.</p>
+        </div>
+    </div>
+    
+    <!-- Services Section -->
+    <div class="section" id="services">
+        <div class="container fade-in">
+            <h1>My Services</h1>
+            <p>Comprehensive solutions tailored to transform your business across four key areas of expertise.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🤖 AI Consulting & Implementation</h3>
+                    <p><strong>Transform your operations with intelligent automation</strong></p>
+                    <ul>
+                        <li>AI strategy development and roadmap creation</li>
+                        <li>Machine learning model implementation</li>
+                        <li>Process automation and optimization</li>
+                        <li>Data analytics and insights generation</li>
+                        <li>AI training and team upskilling</li>
+                    </ul>
+                    <p><em>Results: Up to 300% efficiency improvement</em></p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>🎨 Interior Design & Space Innovation</h3>
+                    <p><strong>Create inspiring environments that boost productivity</strong></p>
+                    <ul>
+                        <li>Commercial and residential space design</li>
+                        <li>Workplace optimization and ergonomics</li>
+                        <li>Smart home and office integration</li>
+                        <li>Sustainable design solutions</li>
+                        <li>3D visualization and virtual staging</li>
+                    </ul>
+                    <p><em>Results: Enhanced productivity and satisfaction</em></p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>📈 Forex Trading & Financial Strategy</h3>
+                    <p><strong>Profitable trading strategies with risk management</strong></p>
+                    <ul>
+                        <li>Custom trading strategy development</li>
+                        <li>Risk management and portfolio optimization</li>
+                        <li>Market analysis and trend identification</li>
+                        <li>Trading psychology and discipline coaching</li>
+                        <li>Automated trading system setup</li>
+                    </ul>
+                    <p><em>Results: Consistent profitability with managed risk</em></p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>💻 IT Solutions & System Integration</h3>
+                    <p><strong>Robust technology infrastructure for growth</strong></p>
+                    <ul>
+                        <li>Custom software development and integration</li>
+                        <li>Cloud migration and infrastructure setup</li>
+                        <li>Cybersecurity implementation and monitoring</li>
+                        <li>Database design and optimization</li>
+                        <li>System maintenance and support</li>
+                    </ul>
+                    <p><em>Results: Streamlined operations and reduced costs</em></p>
+                </div>
+            </div>
+            
+            <h2>Why Choose My Integrated Approach?</h2>
+            <p>Unlike specialists who focus on just one area, I bring a holistic perspective that creates synergies between AI, design, finance, and technology. This unique combination often reveals opportunities and solutions that single-discipline approaches miss entirely.</p>
+            
+            <!-- Portfolio Section -->
+            <div class="portfolio-section">
+                <h2>Portfolio Showcase</h2>
+                <p>Here are some examples of my recent work across different fields:</p>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="ai-project1.jpg" alt="AI Dashboard Implementation" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='🤖 AI Project<br>Custom Analytics Dashboard'">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>🤖 AI Analytics Dashboard</h4>
+                            <p>Custom AI-powered analytics platform that increased client efficiency by 250%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="design-project1.jpg" alt="Modern Office Design" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='🎨 Interior Design<br>Executive Office Space'">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>🎨 Executive Office Redesign</h4>
+                            <p>Modern office space design that boosted team productivity and client satisfaction</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="forex-project1.jpg" alt="Forex Trading Strategy" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='📈 Forex Strategy<br>Automated Trading System'">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>📈 Forex Trading System</h4>
+                            <p>Automated trading strategy with 78% win rate and optimized risk management</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="it-project1.jpg" alt="IT Infrastructure Setup" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='💻 IT Infrastructure<br>Cloud Migration Project'">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4>💻 Cloud Migration Project</h4>
+                            <p>Complete IT infrastructure overhaul reducing costs by 40% while improving performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials Section -->
+            <div class="testimonials-section">
+                <h2>What My Clients Say</h2>
+                <p>Don't just take my word for it - here's what industry leaders say about working with me:</p>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="client-avatar">SM</div>
+                            <div class="testimonial-quote">
+                                "Felix transformed our entire business operations with his AI solutions. Our efficiency increased by 300% within just 3 months. His technical expertise combined with strategic thinking is unmatched."
+                            </div>
+                            <div class="client-info">
+                                <div class="testimonial-author">Sarah Mwangi</div>
+                                <div class="testimonial-role">CEO, Nairobi Tech Solutions</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="client-avatar">DK</div>
+                            <div class="testimonial-quote">
+                                "Working with Felix on our office redesign was incredible. He didn't just create a beautiful space - he designed an environment that boosted our team's creativity and productivity significantly."
+                            </div>
+                            <div class="client-info">
+                                <div class="testimonial-author">David Kiplagat</div>
+                                <div class="testimonial-role">Managing Director, Equity Bank Branch</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="client-avatar">GO</div>
+                            <div class="testimonial-quote">
+                                "Felix's forex trading strategies helped me achieve consistent profits for the first time in years. His risk management approach is sophisticated yet easy to understand and implement."
+                            </div>
+                            <div class="client-info">
+                                <div class="testimonial-author">Grace Otieno</div>
+                                <div class="testimonial-role">Investment Manager, CIC Asset Management</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="client-avatar">MK</div>
+                            <div class="testimonial-quote">
+                                "The IT infrastructure Felix designed for us is robust, scalable, and cost-effective. We've had zero downtime and our operational costs dropped by 40%. Exceptional work!"
+                            </div>
+                            <div class="client-info">
+                                <div class="testimonial-author">Michael Kamau</div>
+                                <div class="testimonial-role">CTO, Safaricom Business Solutions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Section -->
+    <div class="section" id="contact">
+        <div class="container fade-in">
+            <h1>Let's Work Together</h1>
+            <p>Ready to transform your business with AI innovation, stunning design, strategic trading, or robust IT solutions? I'd love to discuss how my expertise can accelerate your success.</p>
+            
+            <h2>Get In Touch</h2>
+            <p>Whether you need a complete business transformation or want to discuss a specific project, I'm here to help. Let's explore how we can achieve exceptional results together.</p>
+            
+            <div class="contact-form">
+                <h3>Send Me a Message</h3>
+                <form id="contactForm" action="https://formspree.io/f/manpnoaz" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interested In *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="ai-consulting">AI Consulting & Implementation</option>
+                            <option value="interior-design">Interior Design & Space Innovation</option>
+                            <option value="forex-trading">Forex Trading & Financial Strategy</option>
+                            <option value="it-solutions">IT Solutions & System Integration</option>
+                            <option value="multiple-services">Multiple Services</option>
+                            <option value="consultation">General Consultation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Project Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select budget range</option>
+                            <option value="under-50k">Under KSh 50,000</option>
+                            <option value="50k-200k">KSh 50,000 - 200,000</option>
+                            <option value="200k-500k">KSh 200,000 - 500,000</option>
+                            <option value="500k-1m">KSh 500,000 - 1,000,000</option>
+                            <option value="over-1m">Over KSh 1,000,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">Project Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (Within 1 month)</option>
+                            <option value="normal">Normal (1-3 months)</option>
+                            <option value="flexible">Flexible (3-6 months)</option>
+                            <option value="planning">Planning stage</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Details *</label>
+                        <textarea id="message" name="message" placeholder="Please describe your project requirements, challenges you're facing, and what you hope to achieve..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        Send Message & Start Transformation
+                    </button>
+                </form>
+                
+                <div id="form-status" style="margin-top: 20px; text-align: center; font-weight: bold;">
+                    <p style="color: #666;">📧 Form submissions go directly to ndambirifelix3@gmail.com</p>
+                </div>
+            </div>
+            
+            <h2>Other Ways to Connect</h2>
+            <div class="services-grid" style="margin-top: 20px;">
+                <div class="service-card">
+                    <h3>📞 Direct Contact</h3>
+                    <p><strong>Phone:</strong> +254 748 158 751</p>
+                    <p><strong>WhatsApp:</strong> +254 748 158 751</p>
+                    <p><strong>Email:</strong> ndambirifelix3@gmail.com</p>
+                    <p><em>Available Mon-Fri: 8AM-6PM EAT</em></p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>🌍 Location & Meetings</h3>
+                    <p><strong>Base:</strong> Ruiru, Kiambu County, Kenya</p>
+                    <p><strong>Service Areas:</strong> Kenya, East Africa, Global (Remote)</p>
+                    <p><strong>Meetings:</strong> In-person, Video calls, Site visits</p>
+                    <p><em>Travel available for major projects</em></p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>⚡ Quick Response</h3>
+                    <p><strong>Email Response:</strong> Within 4 hours</p>
+                    <p><strong>Project Quotes:</strong> Within 24 hours</p>
+                    <p><strong>Emergency Support:</strong> Available for existing clients</p>
+                    <p><em>Serious inquiries only</em></p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>© 2025 Felix - AI, Design, Forex & IT Expert | Transforming Businesses Across Kenya & Beyond</p>
+                <p style="margin-top: 10px;">
+                    <a href="mailto:ndambirifelix3@gmail.com" style="color: #667eea; text-decoration: none;">ndambirifelix3@gmail.com</a> | 
+                    <a href="tel:+254748158751" style="color: #667eea; text-decoration: none;">+254 748 158 751</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('.section, .main-content');
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Get target section
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    // Hide all sections
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show target section
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Show home section by default
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+        });
+        
+        // Interactive button functionality
+        function changeColor() {
+            const colors = [
+                'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
+                'linear-gradient(45deg, #667eea, #764ba2)',
+                'linear-gradient(45deg, #f093fb, #f5576c)',
+                'linear-gradient(45deg, #4facfe, #00f2fe)',
+                'linear-gradient(45deg, #43e97b, #38f9d7)'
+            ];
+            
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = randomColor;
+            
+            const messages = [
+                "🚀 This is the kind of dynamic innovation I bring to AI projects!",
+                "🎨 Just like I transform spaces with creative design solutions!",
+                "📈 Watch your profits grow with my strategic Forex expertise!",
+                "💻 Your IT systems will be this responsive and efficient!",
+                "✨ Experience the Felix difference - where technology meets creativity!"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('demo').innerHTML = randomMessage;
+            
+            // Add glow effect temporarily
+            document.getElementById('demo').classList.add('glow');
+            setTimeout(() => {
+                document.getElementById('demo').classList.remove('glow');
+            }, 2000);
+        }
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all containers
+        document.querySelectorAll('.container').forEach(container => {
+            observer.observe(container);
+        });
+    </script>
+</body>
+</html>
